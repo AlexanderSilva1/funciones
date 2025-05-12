@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ejercicios JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header, footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            background: #333;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        section {
+            padding: 1rem;
+            margin: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .exercise {
+            margin-bottom: 2rem;
+        }
+        .result {
+            background-color: #f4f4f4;
+            padding: 0.5rem;
+            border-left: 4px solid #4CAF50;
+            margin-top: 1rem;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        form {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            padding: 0.3rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-group {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Ejercicios JavaScript</h1>
+        <p>Ingresa los valores y calcula los resultados</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#ej6">Ejercicio 6</a></li>
+            <li><a href="#ej7">Ejercicio 7</a></li>
+            <li><a href="#ej8">Ejercicio 8</a></li>
+            <li><a href="#ej9">Ejercicio 9</a></li>
+            <li><a href="#ej10">Ejercicio 10</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="ej6" class="exercise">
+            <h2>Ejercicio 6</h2>
+            <form id="form6">
+                <label for="z6">Valor de z:</label>
+                <input type="number" id="z6" step="any" value="4.5" required>
+                
+                <div class="form-group">
+                    <button type="button" onclick="calcularEj6()">Calcular</button>
+                </div>
+                
+                <div class="result" id="ej6a"></div>
+                <div class="result" id="ej6b"></div>
+            </form>
+        </section>
+
+        <section id="ej7" class="exercise">
+            <h2>Ejercicio 7</h2>
+            <form id="form7">
+                <label for="t7">Valor de t:</label>
+                <input type="number" id="t7" step="any" value="3.2" required>
+                
+                <div class="form-group">
+                    <button type="button" onclick="calcularEj7()">Calcular</button>
+                </div>
+                
+                <div class="result" id="ej7a"></div>
+                <div class="result" id="ej7b"></div>
+            </form>
+        </section>
+
+        <section id="ej8" class="exercise">
+            <h2>Ejercicio 8</h2>
+            <form id="form8">
+                <label for="x8">Valor de x:</label>
+                <input type="number" id="x8" step="any" value="6.5" required>
+                
+                <label for="y8">Valor de y:</label>
+                <input type="number" id="y8" step="any" value="3.8" required>
+                
+                <div class="form-group">
+                    <button type="button" onclick="calcularEj8()">Calcular</button>
+                </div>
+                
+                <div class="result" id="ej8a"></div>
+                <div class="result" id="ej8b"></div>
+            </form>
+        </section>
+
+        <section id="ej9" class="exercise">
+            <h2>Ejercicio 9</h2>
+            <form id="form9">
+                <label for="c9">Valor de c:</label>
+                <input type="number" id="c9" step="any" value="4.6" required>
+                
+                <label for="d9">Valor de d:</label>
+                <input type="number" id="d9" step="any" value="1.7" required>
+                
+                <div class="form-group">
+                    <button type="button" onclick="calcularEj9()">Calcular</button>
+                </div>
+                
+                <div class="result" id="ej9a"></div>
+                <div class="result" id="ej9b"></div>
+            </form>
+        </section>
+
+        <section id="ej10" class="exercise">
+            <h2>Ejercicio 10</h2>
+            <form id="form10">
+                <label for="x10">Valor de x (en radianes):</label>
+                <input type="number" id="x10" step="any" value="0.314159" required>
+                <small>π/10 ≈ 0.314159</small>
+                
+                <div class="form-group">
+                    <button type="button" onclick="calcularEj10()">Verificar Identidades</button>
+                </div>
+                
+                <div class="result" id="ej10a"></div>
+                <div class="result" id="ej10b"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Calculadora de Ejercicios JavaScript. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Función para calcular el ejercicio 6
+        function calcularEj6() {
+            const z = parseFloat(document.getElementById('z6').value);
+            
+            // Parte a
+            const result6a = 0.4 * Math.pow(z, 4) + 3.1 * Math.pow(z, 2) - 162.3 * z - 80.7;
+            document.getElementById('ej6a').innerHTML = `
+                <p><strong>a)</strong> 0.4z⁴ + 3.1z² - 162.3z - 80.7 = ${result6a.toFixed(4)}</p>
+                <p>Fórmula: 0.4*(${z})⁴ + 3.1*(${z})² - 162.3*${z} - 80.7</p>
+            `;
+            
+            // Parte b
+            const numerator = Math.pow(z, 3) - 23;
+            const denominator = Math.pow(Math.pow(z, 2) + 17.5, 1/3);
+            const result6b = numerator / denominator;
+            document.getElementById('ej6b').innerHTML = `
+                <p><strong>b)</strong> (z³ - 23) / ∛(z² + 17.5) = ${result6b.toFixed(4)}</p>
+                <p>Fórmula: (${z}³ - 23) / ∛(${z}² + 17.5)</p>
+            `;
+        }
+
+        // Función para calcular el ejercicio 7
+        function calcularEj7() {
+            const t = parseFloat(document.getElementById('t7').value);
+            
+            // Parte a
+            const result7a = 0.5 * Math.exp(2 * t) - 3.8 * Math.pow(Math.log(t), 3);
+            document.getElementById('ej7a').innerHTML = `
+                <p><strong>a)</strong> ½e²ᵗ - 3.8ln³(t) = ${result7a.toFixed(4)}</p>
+                <p>Fórmula: 0.5*e^(2*${t}) - 3.8*ln(${t})³</p>
+            `;
+            
+            // Parte b
+            const numerator = 6 * Math.pow(t, 2) + 6 * t - 2;
+            const denominator = Math.pow(t, 2) - 1;
+            const result7b = numerator / denominator;
+            document.getElementById('ej7b').innerHTML = `
+                <p><strong>b)</strong> (6t² + 6t - 2)/(t² - 1) = ${result7b.toFixed(4)}</p>
+                <p>Fórmula: (6*${t}² + 6*${t} - 2)/(${t}² - 1)</p>
+            `;
+        }
+
+        // Función para calcular el ejercicio 8
+        function calcularEj8() {
+            const x = parseFloat(document.getElementById('x8').value);
+            const y = parseFloat(document.getElementById('y8').value);
+            
+            // Parte a
+            const term1 = Math.pow(Math.pow(x, 2) + Math.pow(y, 2), 2/3);
+            const term2 = (x * y) / (y - x);
+            const result8a = term1 + term2;
+            document.getElementById('ej8a').innerHTML = `
+                <p><strong>a)</strong> (x² + y²)²ᐟ³ + (xy)/(y - x) = ${result8a.toFixed(4)}</p>
+                <p>Fórmula: (${x}² + ${y}²)^(2/3) + (${x}*${y})/(${y} - ${x})</p>
+            `;
+            
+            // Parte b
+            const term1b = Math.sqrt(x + y) / Math.pow(x - y, 2);
+            const term2b = 2 * Math.pow(x, 2);
+            const term3b = x * Math.pow(y, 2);
+            const result8b = term1b + term2b - term3b;
+            document.getElementById('ej8b').innerHTML = `
+                <p><strong>b)</strong> √(x + y)/(x - y)² + 2x² - xy² = ${result8b.toFixed(4)}</p>
+                <p>Fórmula: √(${x} + ${y})/(${x} - ${y})² + 2*${x}² - ${x}*${y}²</p>
+            `;
+        }
+
+        // Función para calcular el ejercicio 9
+        function calcularEj9() {
+            const c = parseFloat(document.getElementById('c9').value);
+            const d = parseFloat(document.getElementById('d9').value);
+            const a = c * Math.pow(d, 2);
+            const b = (c + a) / (c - d);
+            
+            // Parte a
+            const term1a = Math.exp(d - b);
+            const term2a = Math.pow(c + a, 1/3);
+            const term3a = Math.pow(c * a, d);
+            const result9a = term1a + term2a - term3a;
+            document.getElementById('ej9a').innerHTML = `
+                <p><strong>a)</strong> e^(d - b) + ∛(c + a) - (ca)^d = ${result9a.toFixed(4)}</p>
+                <p>Fórmula: e^(${d} - ${b.toFixed(4)}) + ∛(${c} + ${a.toFixed(4)}) - (${c}*${a.toFixed(4)})^${d}</p>
+                <p>Donde: a = c*d² = ${a.toFixed(4)}, b = (c + a)/(c - d) = ${b.toFixed(4)}</p>
+            `;
+            
+            // Parte b (Nota: en el enunciado aparece 't' que no está definida, asumimos que es 'd')
+            const term1b = d / c;
+            const term2b = Math.pow((c * d) / b, 2);
+            const term3b = Math.pow(c, d);
+            const term4b = a / b;
+            const result9b = term1b + term2b - term3b - term4b;
+            document.getElementById('ej9b').innerHTML = `
+                <p><strong>b)</strong> d/c + (cd/b)² - c^d - a/b = ${result9b.toFixed(4)}</p>
+                <p>Fórmula: ${d}/${c} + (${c}*${d}/${b.toFixed(4)})² - ${c}^${d} - ${a.toFixed(4)}/${b.toFixed(4)}</p>
+                <p><em>Nota: Se asumió que 't' en el enunciado era 'd'</em></p>
+            `;
+        }
+
+        // Función para calcular el ejercicio 10
+        function calcularEj10() {
+            const x = parseFloat(document.getElementById('x10').value);
+            
+            // Parte a
+            const left10a = Math.pow(Math.cos(x), 2) - Math.pow(Math.sin(x), 2);
+            const right10a = 1 - 2 * Math.pow(Math.sin(x), 2);
+            document.getElementById('ej10a').innerHTML = `
+                <p><strong>a)</strong> cos²x - sin²x = 1 - 2sin²x</p>
+                <p>Lado izquierdo: cos²(${x}) - sin²(${x}) = ${left10a.toFixed(6)}</p>
+                <p>Lado derecho: 1 - 2*sin²(${x}) = ${right10a.toFixed(6)}</p>
+                <p>¿Son iguales? ${Math.abs(left10a - right10a) < 0.000001 ? 'Sí' : 'No'}</p>
+            `;
+            
+            // Parte b
+            const left10b = Math.tan(x) / (Math.sin(x) - 2 * Math.tan(x));
+            const right10b = 1 / (Math.cos(x) - 2);
+            document.getElementById('ej10b').innerHTML = `
+                <p><strong>b)</strong> tanx/(sinx - 2tanx) = 1/(cosx - 2)</p>
+                <p>Lado izquierdo: tan(${x})/(sin(${x}) - 2*tan(${x})) = ${left10b.toFixed(6)}</p>
+                <p>Lado derecho: 1/(cos(${x}) - 2) = ${right10b.toFixed(6)}</p>
+                <p>¿Son iguales? ${Math.abs(left10b - right10b) < 0.000001 ? 'Sí' : 'No'}</p>
+            `;
+        }
+
+        // Calcular todos los ejercicios al cargar la página con valores por defecto
+        window.onload = function() {
+            calcularEj6();
+            calcularEj7();
+            calcularEj8();
+            calcularEj9();
+            calcularEj10();
+        };
+    </script>
+</body>
+</html>
